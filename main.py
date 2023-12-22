@@ -1,5 +1,3 @@
-
-
 import numpy as np
 from matplotlib import mlab, pyplot as plt
 import soundfile as sf

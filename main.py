@@ -2,6 +2,8 @@ import numpy as np
 from matplotlib import mlab, pyplot as plt
 import soundfile as sf
 
+ELEVATION_RATIO = 15
+
 # Ici on extrait les données et le samplerate du fichier audio
 
 # data, samplerate = sf.read('beat.wav')
@@ -21,7 +23,7 @@ def specgram3d(y, srate=44100, ax=None):
     # On transforme le tableau de données du sample en spectre
     spec, freqs, t = mlab.specgram(y, Fs=srate)
     # On transforme le spectre en tableaux 2 dimensions
-    X, Y, Z = t[None, :], freqs[:, None],  20.0 * np.log10(spec)
+    X, Y, Z = t[None, :], freqs[:, None],  ELEVATION_RATIO * np.log10(spec)
     ax.plot_surface(X, Y, Z, cmap='viridis')
     # On désactive la grille et les labels/legendes
     ax.grid(False)
